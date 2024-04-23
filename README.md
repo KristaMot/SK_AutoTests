@@ -1,7 +1,7 @@
-##SK_AutoTests
+## SK_AutoTests
 Автотесты к сайту Superkassa.ru
 
-##Инструкция
+## Инструкция
 установить Playwright
 перейти в папку, куда установлен Playwright
 git clone (адрес репозитория)
