@@ -44,7 +44,7 @@ async function add_services (locators, page) {
         await page.locator(add_service_locator).nth(0).click();
 
         if (submit_locator != null) {
-            await submit_locator.click();
+            await page.locator(submit_locator).click();
         }
 
         const result_price = await page.textContent(price_locator);
