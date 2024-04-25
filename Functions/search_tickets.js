@@ -48,7 +48,7 @@ async function search_tickets (search_ticket_locators, routes, page) {
 
     if (return_way){
         await page.locator(return_locator).click();
-        await page.locator(select_day_locator).nth(14).click();
+        await page.locator(select_day_locator).nth(28).click();
     }
 
     if (travellers === 1){

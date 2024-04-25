@@ -28,8 +28,8 @@ test ('booking_ticket', async ({page}) => {
     await page.goto(url);
     await login_to_account (login_to_account_locators, account_data, page);
 
-    //Number of passengers
-    let travellers = 1; 
+    //Number of passengers (from 1 to 3)
+    let travellers = 3; 
 
     await search_tickets (ticket_search_locators, routes[travellers-1], page);
     await select_ticket (select_ticket_locators, recommendations, routes[travellers-1], page);
@@ -61,9 +61,9 @@ test ('booking_ticket', async ({page}) => {
     await check_in_summary (SMS_info, SMS_info_locators, page);
     await check_in_summary (personal_manager, personal_manager_locators, page);
     await check_in_summary (auto_check_in, auto_check_in_locators, page);
-    //await check_in_summary (safety_on_earth, safety_on_earth_locators, page);
-    //await check_in_summary (flight_safety, flight_safety_locators, page);
-    //await check_in_summary (travel_safety, travel_safety_locators, page);
+    await check_in_summary (safety_on_earth, safety_on_earth_locators, page);
+    await check_in_summary (flight_safety, flight_safety_locators, page);
+    await check_in_summary (travel_safety, travel_safety_locators, page);
 
     //Choose booking payment
     const booking = page.getByTestId('booking-payment-logo-select-button');
