@@ -1,6 +1,7 @@
 // @ts-check
 const { test, expect } = require('@playwright/test');
 
+const { payment } = require ('./Functions/payment_and_check_price.js');
 const { safety_on_earth_locators, flight_safety_locators, travel_safety_locators } = require ('./Locators/locators_insurances.js');
 const { SMS_info_locators, personal_manager_locators, auto_check_in_locators } = require ('./Locators/locators_add_services.js');
 const { insurance_loading, add_insurance, add_services, check_in_summary } = require ('./Functions/add_insurances_and_services.js');
@@ -65,24 +66,6 @@ test ('booking_ticket', async ({page}) => {
     await check_in_summary (flight_safety, flight_safety_locators, page);
     await check_in_summary (travel_safety, travel_safety_locators, page);
 
-    //Choose booking payment
-    const booking = page.getByTestId('booking-payment-logo-select-button');
-    const check_booking = page.getByTestId('priceTickets-booking-service');
-    await booking.click();
-    await expect(check_booking).toBeVisible();
-
-    //Agree with rules
-    const agreement = page.getByTestId('accept-processing-of-personal-data-checkbox');
-    await expect(agreement).not.toBeChecked();
-    await agreement.check();
-    await expect(agreement).toBeChecked();
-
-    //Booking
-    const booking_button = page.getByTestId('pay-button-PREBOOK(live)');
-    const local_bb = page.getByTestId('pay-button-BOOK(live)')
-    const success_booking = page.getByTestId('bookingSuccessMessage');
-    await expect(booking_button).toBeVisible();
-    //await expect(local_bb).toBeVisible();
-    //await local_bb.click();
-    //await expect(success_booking).toBeVisible({timeout: 100000});
+    //Select payment method, agree with rules, check prices
+    await payment (routes[travellers-1], page);
 })

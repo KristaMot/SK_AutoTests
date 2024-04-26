@@ -47,11 +47,15 @@ async function select_ticket(select_ticket_locators, recomendations, routes, pag
 
     await expect(page.locator(staffing_list_locator).first()).toBeVisible({timeout: 10000});
     await expect(page.locator(full_download_staffing_locator)).toBeHidden({timeout: 30000});
-
+    
     try {
-        await page.locator(select_first_tariff_locator).click();
+        if (page.locator(select_first_tariff_locator).isEnabled()) {
+            await page.locator(select_first_tariff_locator).click();
+        } else {
+            await page.locator(select_second_tariff_locator).click();
+        }
     } catch (error) {
-        await page.locator(select_second_tariff_locator).click();
+        console.log ("No tickets")
     }
 
     await expect(page.locator(booking_form_locator)).toBeVisible({timeout: 10000});

@@ -7,6 +7,7 @@ const route_1 = {
         travellers : 1,
         tarif : 'Эконом1 пассажир',
     },
+    payment_method : 'card',
 };
 
 const route_2 = {
@@ -18,6 +19,7 @@ const route_2 = {
         travellers : 2,
         tarif : 'Эконом2 пассажира',
     },
+    payment_method : 'fps',
 };
 
 const route_3 = {
@@ -29,6 +31,7 @@ const route_3 = {
         travellers : 3,
         tarif : 'Эконом3 пассажира',
     },
+    payment_method : 'booking',
 };
 
 const routes = [route_1, route_2, route_3]
